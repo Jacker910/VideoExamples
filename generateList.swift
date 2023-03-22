@@ -19,10 +19,10 @@ let previewImagesPath = mainDirectory.appendingPathComponent(.previewImage)
 
 Task {
     do {
-        let videoNames = try await readFiles(at: videoPath, withExtension: .videoExtension)
+        async let videoNames = readFiles(at: videoPath, withExtension: .videoExtension)
         let imagesNames = try await readFiles(at: previewImagesPath, withExtension: .imageExtension)
-        try compare(video: videoNames, preview: imagesNames)
-        let result: [Post] = videoNames
+        try compare(video: try await videoNames, preview: imagesNames)
+        let result: [Post] = try await videoNames
             .sorted(by: <)
             .compactMap {
                 guard
@@ -35,9 +35,9 @@ Task {
         try writeJsonToFile(json: jsonData, at: mainDirectory.absoluteString, with: "posts")
     } catch let error {
         if error is CompareError {
-            print(error.localizedDescription)
+            fatalError(error.localizedDescription)
         } else {
-            print(error)
+            fatalError("\(error)")
         }
     }
 }
