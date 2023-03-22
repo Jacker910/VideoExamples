@@ -9,6 +9,11 @@ jobs:
   run-script:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Run Script
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Give executable permission
+        run: chmod +x generateList.swift
+        
+      - name: Run script and write file
         run: swift generateList.swift
