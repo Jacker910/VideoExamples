@@ -7,6 +7,11 @@ private extension String {
     static let imageExtension = "jpg"
 }
 
+struct Post: Codable {
+    let videoUrl: URL
+    let previewImageUrl: URL
+}
+
 let manager = FileManager.default
 let mainDirectory = URL(fileURLWithPath: manager.currentDirectoryPath)
 let videoPath = mainDirectory.appendingPathComponent(.video)
@@ -14,11 +19,20 @@ let previewImagesPath = mainDirectory.appendingPathComponent(.previewImage)
 
 Task {
     do {
-        async let videoNames = try await readFiles(at: videoPath, withExtension: .videoExtension)
+        let videoNames = try await readFiles(at: videoPath, withExtension: .videoExtension)
         let imagesNames = try await readFiles(at: previewImagesPath, withExtension: .imageExtension)
-        try compare(video: await videoNames, preview: imagesNames)
-        let jsonData = try mapToJson(imagesNames)
-        try writeJsonToFile(json: jsonData, at: mainDirectory.absoluteString, with: "filesList")
+        try compare(video: videoNames, preview: imagesNames)
+        let result: [Post] = videoNames
+            .sorted(by: <)
+            .compactMap {
+                guard
+                    let videoURL = URL(string: "https://github.com/Jacker910/VideoExamples/raw/main/Video/\($0).mp4"),
+                    let imageURL = URL(string: "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/PreviewPictures/\($0).jpg")
+                else { return nil }
+                return Post(videoUrl: videoURL, previewImageUrl: imageURL)
+            }
+        let jsonData = try mapToJson(result)
+        try writeJsonToFile(json: jsonData, at: mainDirectory.absoluteString, with: "posts")
     } catch let error {
         if error is CompareError {
             print(error.localizedDescription)
@@ -35,11 +49,10 @@ func readFiles(at path: URL, withExtension: String) async throws -> Set<String> 
     return Set(files)
 }
 
-func mapToJson(_ names: Set<String>) throws -> Data {
-    let result = Array(names).sorted(by: <)
+func mapToJson(_ posts: [Post]) throws -> Data {
     let jsonEncoder = JSONEncoder()
-    jsonEncoder.outputFormatting = .prettyPrinted
-    return try jsonEncoder.encode(result)
+    jsonEncoder.outputFormatting = [.prettyPrinted, .withoutEscapingSlashes]
+    return try jsonEncoder.encode(posts)
 }
 
 func writeJsonToFile(json: Data, at path: String, with name: String) throws {
@@ -59,6 +72,7 @@ func compare(video: Set<String>, preview: Set<String>) throws {
         throw CompareError.needVideo(needVideo)
     }
 }
+
 
 enum CompareError: LocalizedError {
     case needPreviewImages(Set<String>)
