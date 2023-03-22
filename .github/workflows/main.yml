@@ -11,9 +11,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-  
-      - name: Install Swift
-        uses: apple/setup-swift@v1
       
       - name: Give executable permission
         run: chmod +x generateList.swift
