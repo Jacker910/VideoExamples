@@ -13,7 +13,7 @@ struct Post: Codable {
 }
 
 let manager = FileManager.default
-let mainDirectory = URL(fileURLWithPath: "./")
+let mainDirectory = URL(fileURLWithPath: manager.currentDirectoryPath)
 let videoPath = mainDirectory.appendingPathComponent(.video)
 let previewImagesPath = mainDirectory.appendingPathComponent(.previewImage)
 
