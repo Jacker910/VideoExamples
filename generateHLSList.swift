@@ -25,7 +25,7 @@ do {
         .sorted(by: <)
         .compactMap {
             guard
-                let videoURL = URL(string: "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/HLS/\($0)_hls/\($0).\(String.videoExtension)"),
+                let videoURL = URL(string: "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/HLS/\($0).\(String.videoExtension)"),
                 let imageURL = URL(string: "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/PreviewPictures/\($0).\(String.imageExtension)")
             else { return nil }
             return Post(videoUrl: videoURL, previewImageUrl: imageURL)
@@ -47,10 +47,7 @@ func readFiles(at directory: String, withExtension: String) throws -> Set<String
     let url = URL(fileURLWithPath: directory)
     
     let contents = try fileManager.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
-    let files = contents.filter { $0.pathExtension == withExtension }.map { $0.deletingPathExtension().lastPathComponent }
-    let subdirectoryFiles = try contents.filter { $0.hasDirectoryPath }.flatMap { try readFiles(at: $0.path, withExtension: withExtension) }
-    let result = files + subdirectoryFiles
-    return Set(result)
+    return Set( contents.filter { $0.pathExtension == withExtension }.map { $0.deletingPathExtension().lastPathComponent } )
 }
 
 func mapToJson(_ posts: [Post]) throws -> Data {
