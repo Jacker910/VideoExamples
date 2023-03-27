@@ -27,20 +27,19 @@ for video in "${VIDEO_FOLDER}"/*.mp4; do
   for i in "${!BITRATES[@]}"; do
     bitrate="${BITRATES[$i]}"
     resolution="${RESOLUTIONS[$i]}"
-    output_folder="${video_folder}/${bitrate}_${resolution}"
-    mkdir -p "${output_folder}"
-    ffmpeg -i "${video}" -c:v libx264 -b:v "${bitrate}" -s "${resolution}" -profile:v main -level 3.0 -preset medium -g 60 -hls_time 6 -hls_list_size 0 -hls_segment_filename "${output_folder}/${filename}_${bitrate}_${resolution}_%03d.ts" "${output_folder}/${filename}_${bitrate}_${resolution}.m3u8"
+    output_file="${filename}_${bitrate}_${resolution}.m3u8"
+    ffmpeg -i "${video}" -c:v libx264 -b:v "${bitrate}" -s "${resolution}" -profile:v main -level 3.0 -preset medium -g 60 -hls_time 6 -hls_list_size 0 -hls_segment_filename "${video_folder}/${filename}_${bitrate}_${resolution}_%03d.ts" "${video_folder}/${output_file}"
     echo "Converted ${filename}.${extension} to adaptive HLS variant with bitrate ${bitrate} and resolution ${resolution}"
   done
 
   # Create a master playlist for the video that lists the URLs of the HLS variant playlists
-  playlist_file="${HLS_FOLDER}/${filename}.m3u8"
+  playlist_file="${HLS_FOLDER}/${filename}/${filename}.m3u8"
   echo "#EXTM3U" > "${playlist_file}"
   for i in "${!BITRATES[@]}"; do
     bitrate="${BITRATES[$i]}"
     resolution="${RESOLUTIONS[$i]}"
-    variant_file="${bitrate}_${resolution}/${filename}_${bitrate}_${resolution}.m3u8"
-    variant_url="${video_folder}/${variant_file}"
+    variant_file="${filename}_${bitrate}_${resolution}.m3u8"
+    variant_url="${variant_file}"
     echo "#EXT-X-STREAM-INF:BANDWIDTH=${bitrate},RESOLUTION=${resolution}" >> "${playlist_file}"
     echo "${variant_url}" >> "${playlist_file}"
   done
