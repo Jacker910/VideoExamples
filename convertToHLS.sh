@@ -7,7 +7,7 @@ VIDEO_FOLDER="./Video"
 HLS_FOLDER="./HLS"
 
 # Specify the list of bitrates and resolutions for the different HLS variants
-BITRATES=("800k" "1200k" "2400k")
+BITRATES=("800000" "1200000" "2400000")
 RESOLUTIONS=("360x640" "480x854" "720x1280")
 
 # Create the HLS folder if it doesn't exist
@@ -40,7 +40,7 @@ for video in "${VIDEO_FOLDER}"/*.mp4; do
     resolution="${RESOLUTIONS[$i]}"
     variant_file="${filename}_${bitrate}_${resolution}.m3u8"
     variant_url="${variant_file}"
-    echo "#EXT-X-STREAM-INF:BANDWIDTH=${bitrate},RESOLUTION=${resolution},CODECS=\"mp4a.40.2,avc1.4d001e\"" >> "${playlist_file}"
+    echo "#EXT-X-STREAM-INF:BANDWIDTH=${bitrate},CODECS=\"mp4a.40.2,avc1.4d001e\"" >> "${playlist_file}"
     echo "${variant_url}" >> "${playlist_file}"
   done
   echo "Created master playlist ${playlist_file}"
