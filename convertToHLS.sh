@@ -40,7 +40,7 @@ for video in "${VIDEO_FOLDER}"/*.mp4; do
     resolution="${RESOLUTIONS[$i]}"
     variant_file="${filename}_${bitrate}_${resolution}.m3u8"
     variant_url="${variant_file}"
-    echo "#EXT-X-STREAM-INF:BANDWIDTH=${bitrate},RESOLUTION=${resolution}" >> "${playlist_file}"
+    echo "#EXT-X-STREAM-INF:BANDWIDTH=${bitrate},RESOLUTION=${resolution},CODECS=\"avc1.4d001e,mp4a.40.2\"" >> "${playlist_file}"
     echo "${variant_url}" >> "${playlist_file}"
   done
   echo "Created master playlist ${playlist_file}"
