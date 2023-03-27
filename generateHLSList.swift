@@ -18,16 +18,13 @@ let videoPath = mainDirectory + .hls
 let previewImagesPath = mainDirectory + .previewImage
 
 do {
-    let videoNames = try readFiles(at: videoPath, withExtension: .videoExtension)
     let imagesNames = try readFiles(at: previewImagesPath, withExtension: .imageExtension)
-    try compare(video: videoNames, preview: imagesNames)
-    let result: [Post] = videoNames
+    let result: [Post] = imagesNames
         .sorted(by: <)
         .compactMap {
-            guard
-                let videoURL = URL(string: "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/HLS/\($0).\(String.videoExtension)"),
-                let imageURL = URL(string: "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/PreviewPictures/\($0).\(String.imageExtension)")
-            else { return nil }
+            let videoURL = URL(string: "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/HLS/\($0)/\($0).\(String.videoExtension)")
+            let imageURL = URL(string: "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/PreviewPictures/\($0).\(String.imageExtension)")
+            guard let videoURL, let imageURL else { return nil }
             return Post(videoUrl: videoURL, previewImageUrl: imageURL)
         }
     let jsonData = try mapToJson(result)
