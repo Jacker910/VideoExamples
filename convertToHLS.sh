@@ -7,7 +7,7 @@ VIDEO_FOLDER="./Video"
 HLS_FOLDER="./HLS"
 
 # Specify the list of bitrates and resolutions for the different HLS variants
-BITRATES=("300000" "600000" "120000" "250000")
+BITRATES=("300000" "600000" "1200000" "2500000")
 RESOLUTIONS=("240x426" "360x640" "480x854" "720x1280")
 
 # Create the HLS folder if it doesn't exist
