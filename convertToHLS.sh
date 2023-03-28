@@ -28,7 +28,7 @@ for video in "${VIDEO_FOLDER}"/*.mp4; do
     bitrate="${BITRATES[$i]}"
     resolution="${RESOLUTIONS[$i]}"
     output_file="${filename}_${bitrate}_${resolution}.m3u8"
-    ffmpeg -i "${video}" -c:v libx264 -b:v "${bitrate}" -s "${resolution}" -profile:v main -level 3.0 -preset medium -g 60 -force_key_frames "expr:gte(t,n_forced*0.2)" -hls_time 0.2 -hls_list_size 0 -hls_segment_filename "${video_folder}/${filename}_${bitrate}_${resolution}_%03d.ts" "${video_folder}/${output_file}"
+    ffmpeg -i "${video}" -c:v libx264 -b:v "${bitrate}" -s "${resolution}" -profile:v main -level 3.0 -preset medium -g 60 -force_key_frames "expr:gte(t,n_forced*0.2)" -hls_init_time 0.2 -hls_time 0.4 -hls_list_size 0 -hls_segment_filename "${video_folder}/${filename}_${bitrate}_${resolution}_%03d.ts" "${video_folder}/${output_file}"
     echo "Converted ${filename}.${extension} to adaptive HLS variant with bitrate ${bitrate} and resolution ${resolution}"
   done
 
