@@ -7,8 +7,8 @@ VIDEO_FOLDER="./Video"
 HLS_FOLDER="./HLS"
 
 # Specify the list of bitrates and resolutions for the different HLS variants
-BITRATES=("800000" "1200000" "2400000")
-RESOLUTIONS=("360x640" "480x854" "720x1280")
+BITRATES=("300000" "600000" "120000" "250000")
+RESOLUTIONS=("240x624" "360x640" "480x854" "720x1280")
 
 # Create the HLS folder if it doesn't exist
 mkdir -p "${HLS_FOLDER}"
