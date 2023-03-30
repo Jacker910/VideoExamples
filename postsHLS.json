@@ -4,8 +4,8 @@
     "previewImageUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/PreviewPictures/adv.jpg"
   },
   {
-    "videoUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/HLS/beach/beach.m3u8",
-    "previewImageUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/PreviewPictures/beach.jpg"
+    "videoUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/HLS/boar/boar.m3u8",
+    "previewImageUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/PreviewPictures/boar.jpg"
   },
   {
     "videoUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/HLS/cat/cat.m3u8",
@@ -24,12 +24,24 @@
     "previewImageUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/PreviewPictures/fall.jpg"
   },
   {
+    "videoUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/HLS/forest/forest.m3u8",
+    "previewImageUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/PreviewPictures/forest.jpg"
+  },
+  {
     "videoUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/HLS/honey/honey.m3u8",
     "previewImageUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/PreviewPictures/honey.jpg"
   },
   {
     "videoUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/HLS/house/house.m3u8",
     "previewImageUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/PreviewPictures/house.jpg"
+  },
+  {
+    "videoUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/HLS/inkInWater/inkInWater.m3u8",
+    "previewImageUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/PreviewPictures/inkInWater.jpg"
+  },
+  {
+    "videoUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/HLS/inkInWater2/inkInWater2.m3u8",
+    "previewImageUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/PreviewPictures/inkInWater2.jpg"
   },
   {
     "videoUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/HLS/milkyWay/milkyWay.m3u8",
@@ -44,6 +56,14 @@
     "previewImageUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/PreviewPictures/river.jpg"
   },
   {
+    "videoUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/HLS/river2/river2.m3u8",
+    "previewImageUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/PreviewPictures/river2.jpg"
+  },
+  {
+    "videoUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/HLS/soap/soap.m3u8",
+    "previewImageUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/PreviewPictures/soap.jpg"
+  },
+  {
     "videoUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/HLS/space/space.m3u8",
     "previewImageUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/PreviewPictures/space.jpg"
   },
@@ -56,8 +76,16 @@
     "previewImageUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/PreviewPictures/switzerland.jpg"
   },
   {
+    "videoUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/HLS/switzerlandTree/switzerlandTree.m3u8",
+    "previewImageUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/PreviewPictures/switzerlandTree.jpg"
+  },
+  {
     "videoUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/HLS/travel/travel.m3u8",
     "previewImageUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/PreviewPictures/travel.jpg"
+  },
+  {
+    "videoUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/HLS/underWater/underWater.m3u8",
+    "previewImageUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/PreviewPictures/underWater.jpg"
   },
   {
     "videoUrl" : "https://raw.githubusercontent.com/Jacker910/VideoExamples/main/HLS/winter/winter.m3u8",
